@@ -21,207 +21,255 @@
             --sh:0 4px 16px rgba(44,36,22,.07);
             --rd:18px;--rds:12px;
         }
-        html{font-size:16px;scroll-behavior:smooth}
+        html{font-size:17px;scroll-behavior:smooth}
         body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);min-height:100vh;padding-bottom:88px}
+
         .top{position:sticky;top:0;z-index:100;padding:.5rem .75rem;background:linear-gradient(135deg,var(--ac-d),var(--ac),var(--ac-l));box-shadow:0 2px 10px rgba(212,162,78,.2)}
         .top-in{display:flex;align-items:center;justify-content:space-between;max-width:600px;margin:0 auto}
-        .top a{color:var(--w);text-decoration:none;font-weight:600;font-size:.78rem;padding:.3rem .6rem;background:rgba(255,255,255,.18);border-radius:50px;display:flex;align-items:center;gap:.2rem}
+        .top a{color:var(--w);text-decoration:none;font-weight:700;font-size:.85rem;padding:.4rem .8rem;background:rgba(255,255,255,.18);border-radius:50px;display:flex;align-items:center;gap:.3rem}
         .top-t{display:flex;align-items:center;gap:.35rem;color:var(--w)}
-        .top-t h1{font-size:.9rem;font-weight:700}
-        .top-tag{font-size:.62rem;font-weight:700;background:rgba(255,255,255,.2);color:var(--w);padding:.15rem .45rem;border-radius:50px}
+        .top-t h1{font-size:.95rem;font-weight:700}
+        .top-tag{font-size:.65rem;font-weight:700;background:rgba(255,255,255,.2);color:var(--w);padding:.15rem .5rem;border-radius:50px}
+
         .prog{background:var(--w);padding:.5rem 1rem;border-bottom:1px solid var(--sand)}
         .prog-in{max-width:600px;margin:0 auto;display:flex;align-items:center;gap:.75rem}
         .prog-dots{display:flex;gap:.4rem;flex:1;justify-content:center}
-        .dot{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;background:var(--sand);color:var(--tl);transition:all .35s cubic-bezier(.34,1.56,.64,1);cursor:pointer;border:2px solid transparent}
+        .dot{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:700;background:var(--sand);color:var(--tl);transition:all .35s cubic-bezier(.34,1.56,.64,1);cursor:pointer;border:2px solid transparent}
         .dot.active{background:var(--ac);color:var(--w);transform:scale(1.15);border-color:var(--ac-l)}
         .dot.done{background:var(--g);color:var(--w)}.dot.done::after{content:'✓'}
         .dot.lock{opacity:.35;pointer-events:none}
         .prog-bar{width:60px;height:6px;background:var(--sand);border-radius:3px;overflow:hidden}
         .prog-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--ac),var(--terra));border-radius:3px;transition:width .5s ease}
+
         .ct{max-width:600px;margin:0 auto;padding:1rem}
         .st{display:none}.st.on{display:block;animation:stIn .45s ease}
         @keyframes stIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+
         .sth{text-align:center;margin-bottom:1rem;padding:1.1rem;background:var(--w);border-radius:var(--rd);box-shadow:var(--sh);position:relative;overflow:hidden}
         .sth::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--ac),var(--terra),var(--sage))}
-        .sth .em{font-size:2.2rem;margin-bottom:.3rem;display:block;animation:bounce 2s ease-in-out infinite}
+        .sth .em{font-size:2.4rem;margin-bottom:.3rem;display:block;animation:bounce 2s ease-in-out infinite}
         @keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
-        .sth h2{font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:800;margin-bottom:.25rem}
-        .sth p{font-size:.82rem;color:var(--tm);line-height:1.45}
-        .cd{background:var(--w);border-radius:var(--rd);padding:1rem;margin-bottom:.7rem;box-shadow:var(--sh)}
+        .sth h2{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:800;margin-bottom:.3rem}
+        .sth p{font-size:.95rem;color:var(--tm);line-height:1.4;font-weight:600}
 
-```
-    /* Scale items */
-    .si{background:var(--w);border-radius:var(--rd);padding:1rem;margin-bottom:.7rem;box-shadow:var(--sh);border:2px solid var(--sand);transition:border-color .3s ease}
-    .si.ans{border-color:var(--ac)}
-    .si-q{padding:.6rem;background:var(--ac-p);border-radius:var(--rds);font-size:.88rem;font-weight:600;text-align:center;line-height:1.4;margin-bottom:.7rem;border-left:3px solid var(--ac);color:var(--text)}
-    .si-labels{display:flex;justify-content:space-between;font-size:.65rem;font-weight:600;color:var(--tl);margin-bottom:.2rem}
-    .si-slider{width:100%;-webkit-appearance:none;appearance:none;height:8px;border-radius:4px;background:linear-gradient(90deg,var(--gp),#FFF9C4,var(--rp));outline:none;margin-bottom:.15rem}
-    .si-slider::-webkit-slider-thumb{-webkit-appearance:none;width:26px;height:26px;border-radius:50%;background:var(--ac);cursor:pointer;border:3px solid var(--w);box-shadow:0 2px 8px rgba(0,0,0,.15)}
-    .si-val{text-align:center;font-size:.75rem;font-weight:700;color:var(--ac-d);min-height:1rem;margin-bottom:.3rem}
-    .si-btn{display:block;width:100%;padding:.5rem;background:var(--ac);color:var(--w);border:none;border-radius:var(--rds);font-size:.78rem;font-weight:700;cursor:pointer;font-family:inherit;transition:all .2s ease}
-    .si-btn:hover{background:var(--ac-d)}
-    .si-btn:disabled{background:#CBD5E0;cursor:not-allowed}
-    .si-fb{margin-top:.4rem;padding:.5rem;border-radius:var(--rds);font-size:.78rem;line-height:1.4;display:none}
-    .si-fb.on{display:block;animation:fbIn .3s ease}
-    @keyframes fbIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
-    .si-fb.ok{background:var(--gp);color:#2E7D32}
-    .si-fb.warn{background:var(--ac-p);color:var(--ac-d)}
-    .si-fb.bad{background:var(--rp);color:var(--r)}
+        /* ── Task box ── */
+        .task{background:var(--ac-p);border-radius:var(--rds);padding:.8rem 1rem;margin-bottom:.7rem;
+            border-left:4px solid var(--ac)}
+        .task p{font-size:1rem;font-weight:700;color:var(--text);line-height:1.4}
 
-    /* Perspective cards */
-    .pc{background:var(--w);border-radius:var(--rd);overflow:hidden;margin-bottom:.8rem;box-shadow:var(--sh)}
-    .pc-scene{padding:.85rem;background:var(--sand);font-size:.82rem;line-height:1.5;border-bottom:2px solid var(--ac-p)}
-    .pc-tabs{display:flex;border-bottom:1px solid var(--sand)}
-    .pc-tab{flex:1;padding:.5rem;text-align:center;font-size:.72rem;font-weight:700;cursor:pointer;background:var(--w);border:none;font-family:inherit;color:var(--tl);transition:all .2s ease;border-bottom:3px solid transparent}
-    .pc-tab.on{color:var(--ac-d);border-bottom-color:var(--ac)}
-    .pc-con{padding:.85rem;display:none;font-size:.82rem;line-height:1.55;color:var(--tm)}
-    .pc-con.on{display:block;animation:fbIn .25s ease}
-    .pc-con .sp{font-weight:700;color:var(--text);display:block;margin-bottom:.2rem}
-    .rq{margin-top:.5rem;padding:.5rem;background:var(--ac-p);border-radius:var(--rds);font-size:.78rem;color:var(--ac-d);font-weight:600}
-    .chs{display:flex;flex-direction:column;gap:.35rem;margin-top:.5rem}
-    .ch{padding:.55rem .75rem;border-radius:var(--rds);border:2px solid var(--sand);background:var(--w);font-size:.78rem;font-weight:600;color:var(--text);cursor:pointer;text-align:left;font-family:inherit;transition:all .2s ease}
-    .ch:active{transform:scale(.98)}
-    .ch.cg{border-color:var(--g);background:var(--gp);color:#2E7D32}
-    .ch.cb{border-color:var(--r);background:var(--rp);color:var(--r)}
-    .ch:disabled{cursor:default}
-    .rfb{margin-top:.35rem;padding:.5rem;border-radius:var(--rds);font-size:.78rem;line-height:1.4;display:none}
-    .rfb.on{display:block;animation:fbIn .3s ease}
-    .rfb.g{background:var(--gp);color:#2E7D32}
-    .rfb.r{background:var(--rp);color:var(--r)}
+        /* Scale items */
+        .si{background:var(--w);border-radius:var(--rd);padding:1rem;margin-bottom:.7rem;box-shadow:var(--sh);border:2px solid var(--sand);transition:border-color .3s ease}
+        .si.ans{border-color:var(--ac)}
+        .si-q{padding:.65rem .75rem;background:var(--ac-p);border-radius:var(--rds);font-size:.95rem;font-weight:600;text-align:center;line-height:1.4;margin-bottom:.75rem;border-left:3px solid var(--ac);color:var(--text)}
+        .si-labels{display:flex;justify-content:space-between;font-size:.75rem;font-weight:700;color:var(--tl);margin-bottom:.25rem}
+        .si-slider{width:100%;-webkit-appearance:none;appearance:none;height:10px;border-radius:5px;background:linear-gradient(90deg,var(--gp),#FFF9C4,var(--rp));outline:none;margin-bottom:.2rem}
+        .si-slider::-webkit-slider-thumb{-webkit-appearance:none;width:30px;height:30px;border-radius:50%;background:var(--ac);cursor:pointer;border:3px solid var(--w);box-shadow:0 2px 8px rgba(0,0,0,.15)}
+        .si-val{text-align:center;font-size:.85rem;font-weight:700;color:var(--ac-d);min-height:1.2rem;margin-bottom:.4rem}
+        .si-btn{display:block;width:100%;padding:.65rem;background:var(--ac);color:var(--w);border:none;border-radius:var(--rds);font-size:.9rem;font-weight:700;cursor:pointer;font-family:inherit;transition:all .2s ease}
+        .si-btn:hover{background:var(--ac-d)}
+        .si-btn:disabled{background:#CBD5E0;cursor:not-allowed}
+        .si-fb{margin-top:.5rem;padding:.6rem;border-radius:var(--rds);font-size:.88rem;line-height:1.4;display:none;font-weight:600}
+        .si-fb.on{display:block;animation:fbIn .3s ease}
+        @keyframes fbIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+        .si-fb.ok{background:var(--gp);color:#2E7D32}
+        .si-fb.warn{background:var(--ac-p);color:var(--ac-d)}
+        .si-fb.bad{background:var(--rp);color:var(--r)}
 
-    /* Reform cards */
-    .rc{background:var(--w);border-radius:var(--rd);padding:1rem;margin-bottom:.7rem;box-shadow:var(--sh)}
-    .rc-bad{padding:.5rem;background:var(--rp);border-radius:var(--rds);font-size:.88rem;font-weight:600;color:var(--r);text-align:center;margin-bottom:.6rem;border-left:3px solid var(--r)}
-    .rc-lbl{font-size:.72rem;font-weight:700;color:var(--sage);margin-bottom:.35rem}
-    .rf-btn{padding:.55rem .75rem;border-radius:var(--rds);border:2px solid var(--sand);background:var(--w);font-size:.78rem;font-weight:600;color:var(--text);cursor:pointer;text-align:left;font-family:inherit;transition:all .2s ease;margin-bottom:.3rem;display:block;width:100%}
-    .rf-btn:active{transform:scale(.98)}
-    .rf-btn.rfg{border-color:var(--g);background:var(--gp);color:#2E7D32}
-    .rf-btn.rfb{border-color:var(--r);background:var(--rp);color:var(--r)}
-    .rf-btn:disabled{cursor:default}
-    .rf-fb{margin-top:.2rem;padding:.5rem;border-radius:var(--rds);font-size:.78rem;line-height:1.4;display:none}
-    .rf-fb.on{display:block;animation:fbIn .3s ease}
-    .rf-fb.g{background:var(--gp);color:#2E7D32}
-    .rf-fb.r{background:var(--rp);color:var(--r)}
+        /* Perspective cards */
+        .pc{background:var(--w);border-radius:var(--rd);overflow:hidden;margin-bottom:.8rem;box-shadow:var(--sh)}
+        .pc-scene{padding:.9rem;background:var(--sand);font-size:.9rem;line-height:1.5;border-bottom:2px solid var(--ac-p)}
+        .pc-tabs{display:flex;border-bottom:1px solid var(--sand)}
+        .pc-tab{flex:1;padding:.6rem;text-align:center;font-size:.8rem;font-weight:700;cursor:pointer;background:var(--w);border:none;font-family:inherit;color:var(--tl);transition:all .2s ease;border-bottom:3px solid transparent}
+        .pc-tab.on{color:var(--ac-d);border-bottom-color:var(--ac);background:var(--ac-p)}
+        .pc-con{padding:.9rem;display:none;font-size:.9rem;line-height:1.55;color:var(--tm)}
+        .pc-con.on{display:block;animation:fbIn .25s ease}
+        .pc-con .sp{font-weight:700;color:var(--text);display:block;margin-bottom:.3rem}
+        .rq{margin-top:.6rem;padding:.6rem;background:var(--ac-p);border-radius:var(--rds);font-size:.85rem;color:var(--ac-d);font-weight:700}
 
-    .fb{padding:.7rem;border-radius:var(--rds);margin-top:.5rem;display:none;font-size:.82rem;line-height:1.45}
-    .fb.on{display:block;animation:fbIn .3s ease}
-    .fb.fg{background:var(--gp);color:#2E7D32}
-    .fb.fn{background:var(--sand);color:var(--tm)}
-    .done-btn{display:flex;align-items:center;justify-content:center;gap:.4rem;width:100%;padding:.85rem;margin-top:1rem;background:linear-gradient(135deg,var(--g),var(--sage-l));color:var(--w);border:none;border-radius:var(--rds);font-size:.9rem;font-weight:700;cursor:pointer;font-family:inherit;transition:all .3s ease}
-    .done-btn:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(76,175,80,.25)}
-    .done-btn:disabled{background:#CBD5E0;cursor:not-allowed;transform:none;box-shadow:none}
-    .fnav{position:fixed;bottom:1rem;left:50%;transform:translateX(-50%);display:flex;gap:.5rem;align-items:center;background:var(--w);padding:.45rem;border-radius:50px;box-shadow:0 4px 20px rgba(44,36,22,.13);z-index:200}
-    .fnav button{width:40px;height:40px;border-radius:50%;border:none;background:var(--sand);font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .25s ease;font-family:inherit}
-    .fnav button:hover:not(:disabled){background:var(--ac);color:var(--w)}
-    .fnav button:disabled{opacity:.3;cursor:not-allowed}
-    .fnav .nl{font-size:.78rem;font-weight:700;color:var(--text);padding:0 .5rem}
-    .comp{display:none;text-align:center;padding:2rem 1.25rem;background:var(--w);border-radius:var(--rd);box-shadow:var(--sh)}
-    .comp.on{display:block;animation:stIn .5s ease}
-    .comp .be{font-size:3.5rem;margin-bottom:.6rem;animation:bounce 2s ease-in-out infinite}
-    .comp h2{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--g);margin-bottom:.4rem}
-    .comp p{font-size:.88rem;color:var(--tm);line-height:1.5;margin-bottom:1.2rem}
-    .comp a{display:inline-flex;align-items:center;gap:.3rem;padding:.6rem 1.25rem;background:var(--ac);color:var(--w);border-radius:50px;text-decoration:none;font-weight:700;font-size:.82rem}
-</style>
-```
+        .chs{display:flex;flex-direction:column;gap:.4rem;margin-top:.5rem}
+        .ch{padding:.7rem .9rem;border-radius:var(--rds);border:2px solid var(--sand);background:var(--w);font-size:.88rem;font-weight:600;color:var(--text);cursor:pointer;text-align:left;font-family:inherit;transition:all .2s ease;line-height:1.3}
+        .ch:active{transform:scale(.98)}
+        .ch.cg{border-color:var(--g);background:var(--gp);color:#2E7D32}
+        .ch.cb{border-color:var(--r);background:var(--rp);color:var(--r)}
+        .ch:disabled{cursor:default}
+        .rfb{margin-top:.4rem;padding:.55rem;border-radius:var(--rds);font-size:.85rem;line-height:1.4;display:none;font-weight:600}
+        .rfb.on{display:block;animation:fbIn .3s ease}
+        .rfb.g{background:var(--gp);color:#2E7D32}
+        .rfb.r{background:var(--rp);color:var(--r)}
 
+        /* Reform cards */
+        .rc{background:var(--w);border-radius:var(--rd);padding:1rem;margin-bottom:.7rem;box-shadow:var(--sh)}
+        .rc-bad{padding:.6rem .75rem;background:var(--rp);border-radius:var(--rds);font-size:.95rem;font-weight:700;color:var(--r);text-align:center;margin-bottom:.7rem;border-left:3px solid var(--r)}
+        .rc-lbl{font-size:.8rem;font-weight:700;color:var(--sage);margin-bottom:.4rem}
+        .rf-btn{padding:.65rem .9rem;border-radius:var(--rds);border:2px solid var(--sand);background:var(--w);font-size:.88rem;font-weight:600;color:var(--text);cursor:pointer;text-align:left;font-family:inherit;transition:all .2s ease;margin-bottom:.35rem;display:block;width:100%;line-height:1.3}
+        .rf-btn:active{transform:scale(.98)}
+        .rf-btn.rfg{border-color:var(--g);background:var(--gp);color:#2E7D32}
+        .rf-btn.rfb{border-color:var(--r);background:var(--rp);color:var(--r)}
+        .rf-btn:disabled{cursor:default}
+        .rf-fb{margin-top:.25rem;padding:.55rem;border-radius:var(--rds);font-size:.85rem;line-height:1.4;display:none;font-weight:600}
+        .rf-fb.on{display:block;animation:fbIn .3s ease}
+        .rf-fb.g{background:var(--gp);color:#2E7D32}
+        .rf-fb.r{background:var(--rp);color:var(--r)}
+
+        .fb{padding:.75rem;border-radius:var(--rds);margin-top:.5rem;display:none;font-size:.9rem;line-height:1.4;font-weight:600}
+        .fb.on{display:block;animation:fbIn .3s ease}
+        .fb.fg{background:var(--gp);color:#2E7D32}
+        .fb.fn{background:var(--sand);color:var(--tm)}
+
+        .done-btn{display:flex;align-items:center;justify-content:center;gap:.4rem;width:100%;padding:1rem;margin-top:1rem;background:linear-gradient(135deg,var(--g),var(--sage-l));color:var(--w);border:none;border-radius:var(--rds);font-size:1rem;font-weight:700;cursor:pointer;font-family:inherit;transition:all .3s ease}
+        .done-btn:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(76,175,80,.25)}
+        .done-btn:disabled{background:#CBD5E0;cursor:not-allowed;transform:none;box-shadow:none}
+
+        .fnav{position:fixed;bottom:1rem;left:50%;transform:translateX(-50%);display:flex;gap:.5rem;align-items:center;background:var(--w);padding:.5rem .75rem;border-radius:50px;box-shadow:0 4px 20px rgba(44,36,22,.13);z-index:200}
+        .fnav button{height:44px;padding:0 1.1rem;border-radius:50px;border:none;background:var(--sand);font-size:.9rem;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:.3rem;transition:all .25s ease;font-family:inherit;color:var(--text)}
+        .fnav button:hover:not(:disabled){background:var(--ac);color:var(--w)}
+        .fnav button:disabled{opacity:.3;cursor:not-allowed}
+        .fnav .nl{font-size:.85rem;font-weight:700;color:var(--text);padding:0 .5rem}
+
+        .comp{display:none;text-align:center;padding:2rem 1.25rem;background:var(--w);border-radius:var(--rd);box-shadow:var(--sh)}
+        .comp.on{display:block;animation:stIn .5s ease}
+        .comp .be{font-size:3.5rem;margin-bottom:.6rem;animation:bounce 2s ease-in-out infinite}
+        .comp h2{font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--g);margin-bottom:.5rem}
+        .comp p{font-size:.95rem;color:var(--tm);line-height:1.5;margin-bottom:1.2rem}
+        .comp a{display:inline-flex;align-items:center;gap:.3rem;padding:.75rem 1.5rem;background:var(--ac);color:var(--w);border-radius:50px;text-decoration:none;font-weight:700;font-size:.9rem}
+    </style>
 </head>
 <body>
-<header class="top"><div class="top-in"><a href="index.html">← Zurück</a><div class="top-t"><span>✊</span><h1>Wo fängt Rassismus an?</h1></div><span class="top-tag">HS2</span></div></header>
-<div class="prog"><div class="prog-in"><div class="prog-dots"><div class="dot active" data-s="1" onclick="go(1)">1</div><div class="dot lock" data-s="2" onclick="go(2)">2</div><div class="dot lock" data-s="3" onclick="go(3)">3</div></div><div class="prog-bar"><div class="prog-fill" id="pf"></div></div></div></div>
+
+<header class="top"><div class="top-in">
+    <a href="index.html">← Zurück</a>
+    <div class="top-t"><span>✊</span><h1>Wo fängt Rassismus an?</h1></div>
+    <span class="top-tag">Kl. 7</span>
+</div></header>
+
+<div class="prog"><div class="prog-in">
+    <div class="prog-dots">
+        <div class="dot active" data-s="1" onclick="go(1)">1</div>
+        <div class="dot lock" data-s="2" onclick="go(2)">2</div>
+        <div class="dot lock" data-s="3" onclick="go(3)">3</div>
+    </div>
+    <div class="prog-bar"><div class="prog-fill" id="pf"></div></div>
+</div></div>
+
 <main class="ct">
 
 <section class="st on" id="s1">
-    <div class="sth"><span class="em">🔍</span><h2>Sprache unter der Lupe</h2><p>Manche Sätze klingen harmlos, sind aber verletzend. Bewertet jeden Satz auf der Skala.</p></div>
+    <div class="sth">
+        <span class="em">🔍</span>
+        <h2>Sätze bewerten</h2>
+        <p>Lies den Satz. Schiebe den Regler. Klicke dann auf „Bestätigen".</p>
+    </div>
+    <div class="task"><p>🎯 Wie schlimm ist der Satz? Schiebe den Regler!</p></div>
     <div id="scaleWrap"></div>
     <div class="fb" id="f1"></div>
-    <button class="done-btn" id="b1" disabled onclick="complete(1)">Station abschließen ✓</button>
+    <button class="done-btn" id="b1" disabled onclick="complete(1)">Weiter ✓</button>
 </section>
 
 <section class="st" id="s2">
-    <div class="sth"><span class="em">🔄</span><h2>Perspektivwechsel</h2><p>Jede Situation hat zwei Seiten. Lest beide Perspektiven und beantwortet die Frage.</p></div>
+    <div class="sth">
+        <span class="em">🔄</span>
+        <h2>Zwei Seiten</h2>
+        <p>Klicke auf „Was er denkt" und „Wie sie fühlt". Beantworte dann die Frage.</p>
+    </div>
+    <div class="task"><p>🎯 Lies beide Seiten. Klicke auf die richtige Antwort.</p></div>
     <div id="perspWrap"></div>
     <div class="fb" id="f2"></div>
-    <button class="done-btn" id="b2" disabled onclick="complete(2)">Station abschließen ✓</button>
+    <button class="done-btn" id="b2" disabled onclick="complete(2)">Weiter ✓</button>
 </section>
 
 <section class="st" id="s3">
-    <div class="sth"><span class="em">💬</span><h2>Besser sagen</h2><p>Zu jedem problematischen Satz gibt es eine respektvolle Alternative. Findet sie!</p></div>
+    <div class="sth">
+        <span class="em">💬</span>
+        <h2>Besser sagen</h2>
+        <p>Welcher Satz ist besser? Klicke darauf.</p>
+    </div>
+    <div class="task"><p>🎯 Der rote Satz ist schlecht. Klicke auf den besseren Satz.</p></div>
     <div id="refWrap"></div>
     <div class="fb" id="f3"></div>
-    <button class="done-btn" id="b3" disabled onclick="complete(3)">🎉 Alle Stationen geschafft!</button>
+    <button class="done-btn" id="b3" disabled onclick="complete(3)">🎉 Fertig!</button>
 </section>
 
-<div class="comp" id="comp"><div class="be">🎉</div><h2>Stark gemacht!</h2><p>Ihr könnt Alltagsrassismus erkennen und bessere Worte finden. Sprache formt Denken – jetzt schreibt eure Texte!</p><a href="index.html">← Zurück zur Übersicht</a></div>
+<div class="comp" id="comp">
+    <div class="be">🎉</div>
+    <h2>Stark gemacht!</h2>
+    <p>Ihr könnt verletzende Sätze erkennen und es besser sagen!</p>
+    <a href="index.html">← Zurück zur Übersicht</a>
+</div>
 </main>
-<nav class="fnav"><button onclick="goPrev()" id="bp" disabled>◀</button><div class="nl"><span id="cl">1</span> / 3</div><button onclick="goNext()" id="bn" disabled>▶</button></nav>
+
+<nav class="fnav">
+    <button onclick="goPrev()" id="bp" disabled>◀ Zurück</button>
+    <div class="nl"><span id="cl">1</span> / 3</div>
+    <button onclick="goNext()" id="bn" disabled>Weiter ▶</button>
+</nav>
 
 <script>
 let cur=1,T=3,dn=[];
 
 const SD=[
-{t:"\u201EWo kommst du WIRKLICH her?\u201C",c:2,fb:{0:"Dieser Satz unterstellt, dass jemand nicht von hier sein kann. Eine h\u00E4ufige Mikroaggression.",1:"Gut erkannt \u2013 nicht harmlos! Er unterstellt, dass jemand nicht hierhergeh\u00F6rt.",2:"Genau! Der Satz markiert Menschen aufgrund ihres Aussehens als \u201Efremd\u201C."}},
-{t:"\u201EF\u00FCr einen Ausl\u00E4nder sprichst du echt gut Deutsch.\u201C",c:2,fb:{0:"Auch nett gemeint: Der Satz setzt voraus, dass \u201EAusl\u00E4nder\u201C kein gutes Deutsch k\u00F6nnen.",1:"Richtig \u2013 hinter dem Kompliment steckt ein Vorurteil.",2:"Genau! Solche \u201EKomplimente\u201C basieren auf Vorurteilen."}},
-{t:"\u201EIch hab nichts gegen Ausl\u00E4nder, ABER...\u201C",c:2,fb:{0:"Das \u201EAber\u201C verr\u00E4t alles: Was danach kommt, ist fast immer rassistisch.",1:"Gut beobachtet! Das \u201EAber\u201C ist ein Warnsignal.",2:"Genau! Ein Klassiker f\u00FCr versteckten Rassismus."}},
-{t:"\u201EDarf ich deine Haare anfassen?\u201C",c:1,fb:{0:"Schwarze Menschen h\u00F6ren das oft. Es macht sie zum \u201EObjekt\u201C.",1:"Richtig! \u00DCbergriffig \u2013 niemandes K\u00F6rper ist eine Attraktion.",2:"Problematisch und \u00FCbergriffig, aber oft eher unwissend als absichtlich."}},
-{t:"\u201EK\u00F6nnen alle Sch\u00FCler bitte in den Sitzkreis kommen?\u201C",c:0,fb:{0:"Richtig! Dieser Satz ist v\u00F6llig okay.",1:"Dieser Satz ist tats\u00E4chlich harmlos!",2:"Moment \u2013 der ist okay! Er behandelt alle gleich."}}
+{t:'"Wo kommst du WIRKLICH her?"',c:2,fb:{0:'❌ Nicht harmlos! Dieser Satz sagt: Du gehörst nicht hierher.',1:'👆 Nicht ganz – er sagt: Du bist fremd hier.',2:'✅ Richtig! Er behandelt jemanden als fremd.'}},
+{t:'"Für einen Ausländer sprichst du echt gut Deutsch."',c:2,fb:{0:'❌ Klingt nett, ist aber verletzend. Dahinter steckt ein Vorurteil.',1:'👆 Näher dran – aber dahinter steckt ein Vorurteil.',2:'✅ Richtig! Das Kompliment zeigt ein Vorurteil.'}},
+{t:'"Ich hab nichts gegen Ausländer, ABER..."',c:2,fb:{0:'❌ Das "Aber" ist ein Warnsignal. Was danach kommt, ist oft verletzend.',1:'👆 Gut gesehen – das "Aber" zeigt das Problem.',2:'✅ Richtig! Das "Aber" verrät den eigentlichen Gedanken.'}},
+{t:'"Darf ich deine Haare anfassen?"',c:1,fb:{0:'❌ Das passiert oft. Es ist übergriffig – niemands Körper ist zum Anfassen.',1:'✅ Richtig! Kein Mensch ist zum Anschauen oder Anfassen.',2:'👆 Übergriffig – aber nicht immer absichtlich.'}},
+{t:'"Können alle Schüler bitte in den Sitzkreis kommen?"',c:0,fb:{0:'✅ Richtig! Dieser Satz ist völlig okay.',1:'❌ Dieser Satz ist harmlos!',2:'❌ Stopp – der ist okay! Alle werden gleich behandelt.'}}
 ];
 
 const PD=[
-{scene:"Mensa. Markus sagt lachend: <strong>\u201EHey, das ist unser Tisch! Eure Seite ist da dr\u00FCben!\u201C</strong>",
-sp:{n:"Markus denkt:",t:"\u201EWar doch nur Spa\u00DF! Die soll sich nicht so anstellen.\u201C"},
-af:{n:"Lena f\u00FChlt:",t:"\u201EIch wollte dazugeh\u00F6ren. Jetzt f\u00FChle ich mich nicht willkommen. Die anderen haben gelacht.\u201C"},
-q:"Warum ist es f\u00FCr Lena verletzender, als Markus denkt?",
-ch:[{t:"Weil Lena keinen Spa\u00DF versteht",c:0},{t:"Weil Markus\u2019 \u201ESpa\u00DF\u201C Lena das Gef\u00FChl gibt, nicht dazuzugeh\u00F6ren",c:1},{t:"Weil Lena zu empfindlich ist",c:0}],
-gf:"\u2705 Die Wirkung z\u00E4hlt mehr als die Absicht.",bf:"\u274C Die Wirkung auf Lena ist das Entscheidende."},
-{scene:"Sport. Samir wird als Letzter gew\u00E4hlt. Tim: <strong>\u201ENa gut, dann nehmen wir halt Samir.\u201C</strong>",
-sp:{n:"Tim denkt:",t:"\u201EIrgendjemand muss ja zuletzt gew\u00E4hlt werden. Ich kenne ihn halt nicht so gut.\u201C"},
-af:{n:"Samir f\u00FChlt:",t:"\u201EIch bin immer der Letzte. \u201EDann halt Samir\u201C \u2013 als w\u00E4re ich der Trostpreis.\u201C"},
-q:"Was ist das Problem an Tims Verhalten?",
-ch:[{t:"Nichts \u2013 jemand muss halt zuletzt gew\u00E4hlt werden",c:0},{t:"Tim gibt Samir durch Wortwahl das Gef\u00FChl, nicht gewollt zu sein",c:1},{t:"Samir sollte besser Sport machen",c:0}],
-gf:"\u2705 Auch unabsichtlich \u2013 die Art verletzt. Kleine Momente summieren sich.",bf:"\u274C Stell dir vor, du w\u00E4rst IMMER der Letzte."},
-{scene:"Aylin erz\u00E4hlt vom Urlaub. Jens: <strong>\u201EAber du bist doch Deutsche? Warum f\u00E4hrst du in die T\u00FCrkei?\u201C</strong>",
-sp:{n:"Jens denkt:",t:"\u201EIch war einfach neugierig. Ich finde andere Kulturen interessant.\u201C"},
-af:{n:"Aylin f\u00FChlt:",t:"\u201EWarum muss ich mich erkl\u00E4ren? F\u00FCr manche bin ich nie \u201Edeutsch genug\u201C.\u201C"},
-q:"Was zeigt Jens\u2019 Frage?",
-ch:[{t:"Interesse an anderen Kulturen",c:0},{t:"Er sieht \u201Edeutsch\u201C und \u201Et\u00FCrkisch\u201C als Widerspruch",c:1},{t:"Gar nichts \u2013 v\u00F6llig normal",c:0}],
-gf:"\u2705 Man kann beides sein \u2013 ohne sich zu rechtfertigen.",bf:"\u274C Die Frage verr\u00E4t: Jens sieht \u201Edeutsch\u201C und \u201Et\u00FCrkisch\u201C als Gegensatz."}
+{scene:'Mensa. Markus sagt lachend: <strong>„Hey, das ist unser Tisch! Eure Seite ist da drüben!"</strong>',
+sp:{n:'Markus denkt:',t:'"War doch nur Spaß! Die soll sich nicht so anstellen."'},
+af:{n:'Lena fühlt:',t:'"Ich wollte dazugehören. Jetzt fühle ich mich nicht willkommen."'},
+q:'Warum ist es für Lena verletzender, als Markus denkt?',
+ch:[{t:'Weil Lena keinen Spaß versteht',c:0},{t:'Markus\' "Spaß" gibt Lena das Gefühl, nicht dazuzugehören',c:1},{t:'Weil Lena zu empfindlich ist',c:0}],
+gf:'✅ Die Wirkung zählt mehr als die Absicht.',bf:'❌ Wie Lena sich fühlt, ist das Entscheidende.'},
+{scene:'Sport. Samir wird als Letzter gewählt. Tim: <strong>„Na gut, dann nehmen wir halt Samir."</strong>',
+sp:{n:'Tim denkt:',t:'"Irgendjemand muss ja zuletzt gewählt werden."'},
+af:{n:'Samir fühlt:',t:'"Ich bin immer der Letzte. Als wäre ich der Trostpreis."'},
+q:'Was ist das Problem?',
+ch:[{t:'Nichts – jemand muss halt zuletzt kommen',c:0},{t:'Tim gibt Samir das Gefühl, nicht gewollt zu sein',c:1},{t:'Samir sollte besser Sport machen',c:0}],
+gf:'✅ Kleine Momente summieren sich.',bf:'❌ Stell dir vor, du wärst IMMER der Letzte.'},
+{scene:'Aylin erzählt vom Urlaub. Jens: <strong>„Aber du bist doch Deutsche? Warum fährst du in die Türkei?"</strong>',
+sp:{n:'Jens denkt:',t:'"Ich war einfach neugierig."'},
+af:{n:'Aylin fühlt:',t:'"Für manche bin ich nie \'deutsch genug\'."'},
+q:'Was zeigt Jens\' Frage?',
+ch:[{t:'Interesse an anderen Kulturen',c:0},{t:'Er sieht "deutsch" und "türkisch" als Widerspruch',c:1},{t:'Gar nichts – ganz normal',c:0}],
+gf:'✅ Man kann beides sein – ohne sich zu erklären.',bf:'❌ Die Frage zeigt: Jens sieht beides als Gegensatz.'}
 ];
 
 const RD=[
-{bad:"\u201EWo kommst du wirklich her?\u201C",opts:[{t:"\u201EErz\u00E4hl mal \u2013 was machst du gerne?\u201C",c:1},{t:"\u201EDu siehst aus wie ein Ausl\u00E4nder.\u201C",c:0},{t:"\u201EIn welchem Land wurdest du geboren?\u201C",c:0}],gf:"\u2705 So zeigst du echtes Interesse an der Person!",bf:"\u274C Nicht besser. Zeig Interesse an der Person, nicht am Aussehen."},
-{bad:"\u201EF\u00FCr einen Ausl\u00E4nder sprichst du gut Deutsch.\u201C",opts:[{t:"\u201EDu dr\u00FCckst dich echt gut aus!\u201C",c:1},{t:"\u201EHast du Deutsch in einem Kurs gelernt?\u201C",c:0},{t:"\u201EBesser als manche Deutsche, haha!\u201C",c:0}],gf:"\u2705 Ein ehrliches Kompliment ohne Vorurteile!",bf:"\u274C Hier schwingt noch ein Vorurteil mit."},
-{bad:"\u201EDie kochen bestimmt komisches Essen.\u201C",opts:[{t:"\u201EDie essen bestimmt kein Schweinefleisch.\u201C",c:0},{t:"\u201EVielleicht k\u00F6nnen wir was Neues probieren!\u201C",c:1},{t:"\u201EHauptsache die essen nicht bei uns.\u201C",c:0}],gf:"\u2705 Neugier statt Vorurteil \u2013 so wird Vielfalt Bereicherung!",bf:"\u274C Immer noch Vorurteile. Sei offen und neugierig."},
-{bad:"\u201EIhr Ausl\u00E4nder seid doch alle gleich.\u201C",opts:[{t:"\u201EAlle aus dem Land sind so.\u201C",c:0},{t:"\u201EIch kenne dich noch nicht \u2013 erz\u00E4hl mehr!\u201C",c:1},{t:"\u201ENaja, stimmt halt meistens.\u201C",c:0}],gf:"\u2705 Jeder Mensch ist einzigartig. Lerne die Person kennen!",bf:"\u274C Immer noch Verallgemeinerung. Jeder ist ein Individuum."}
+{bad:'"Wo kommst du wirklich her?"',opts:[{t:'"Erzähl mal – was machst du gerne?"',c:1},{t:'"Du siehst aus wie ein Ausländer."',c:0},{t:'"In welchem Land wurdest du geboren?"',c:0}],gf:'✅ So zeigst du echtes Interesse an der Person!',bf:'❌ Zeig Interesse an der Person, nicht am Aussehen.'},
+{bad:'"Für einen Ausländer sprichst du gut Deutsch."',opts:[{t:'"Du drückst dich echt gut aus!"',c:1},{t:'"Hast du Deutsch in einem Kurs gelernt?"',c:0},{t:'"Besser als manche Deutsche, haha!"',c:0}],gf:'✅ Ein ehrliches Kompliment ohne Vorurteil!',bf:'❌ Hier schwingt noch ein Vorurteil mit.'},
+{bad:'"Die kochen bestimmt komisches Essen."',opts:[{t:'"Die essen bestimmt kein Schweinefleisch."',c:0},{t:'"Vielleicht können wir was Neues probieren!"',c:1},{t:'"Hauptsache die essen nicht bei uns."',c:0}],gf:'✅ Neugier statt Vorurteil – so geht es!',bf:'❌ Immer noch Vorurteile. Sei offen.'},
+{bad:'"Ihr Ausländer seid doch alle gleich."',opts:[{t:'"Alle aus dem Land sind so."',c:0},{t:'"Ich kenne dich noch nicht – erzähl mehr!"',c:1},{t:'"Naja, stimmt halt meistens."',c:0}],gf:'✅ Jeder Mensch ist einzigartig!',bf:'❌ Das ist eine Verallgemeinerung. Lerne die Person kennen.'}
 ];
 
 /* Render Station 1 */
 function r1(){const w=document.getElementById('scaleWrap');SD.forEach((d,i)=>{
-w.innerHTML+=`<div class="si" id="si${i}"><div class="si-q">${d.t}</div><div class="si-labels"><span>Harmlos</span><span>Verletzend</span><span>Rassistisch</span></div><input type="range" class="si-slider" id="sl${i}" min="0" max="2" step="1" value="1"><div class="si-val" id="sv${i}">Verletzend</div><button class="si-btn" id="sb${i}" onclick="cScale(${i})">Best\u00E4tigen</button><div class="si-fb" id="sf${i}"></div></div>`;
-});document.querySelectorAll('.si-slider').forEach((s,i)=>{s.addEventListener('input',()=>{document.getElementById('sv'+i).textContent=['Harmlos','Verletzend','Rassistisch'][s.value]})});}
+w.innerHTML+=`<div class="si" id="si${i}"><div class="si-q">${d.t}</div><div class="si-labels"><span>😊 Harmlos</span><span>😟 Verletzend</span><span>❌ Rassistisch</span></div><input type="range" class="si-slider" id="sl${i}" min="0" max="2" step="1" value="1"><div class="si-val" id="sv${i}">Verletzend</div><button class="si-btn" id="sb${i}" onclick="cScale(${i})">Bestätigen</button><div class="si-fb" id="sf${i}"></div></div>`;
+});document.querySelectorAll('.si-slider').forEach((s,i)=>{s.addEventListener('input',()=>{document.getElementById('sv'+i).textContent=['😊 Harmlos','😟 Verletzend','❌ Rassistisch'][s.value]})});}
 let s1d=0;
 function cScale(i){const v=+document.getElementById('sl'+i).value,d=SD[i],diff=Math.abs(v-d.c),fb=document.getElementById('sf'+i);
 fb.className='si-fb on '+(diff===0?'ok':diff===1?'warn':'bad');fb.textContent=d.fb[v];
 document.getElementById('sb'+i).disabled=true;document.getElementById('si'+i).classList.add('ans');document.getElementById('sl'+i).disabled=true;
-s1d++;if(s1d>=SD.length){show('f1','fg','\uD83D\uDC4F Alle S\u00E4tze bewertet! Auch \u201Egut gemeinte\u201C S\u00E4tze k\u00F6nnen verletzen.');document.getElementById('b1').disabled=false}}
+s1d++;if(s1d>=SD.length){show('f1','fg','👏 Alle Sätze bewertet! Auch "nett gemeinte" Sätze können verletzen.');document.getElementById('b1').disabled=false}}
 
 /* Render Station 2 */
 function r2(){const w=document.getElementById('perspWrap');PD.forEach((d,i)=>{
-w.innerHTML+=`<div class="pc" id="pc${i}"><div class="pc-scene">${d.scene}</div><div class="pc-tabs"><button class="pc-tab on" onclick="stab(${i},'sp')">\uD83D\uDDE3\uFE0F Sprecher*in</button><button class="pc-tab" onclick="stab(${i},'af')">\uD83D\uDC94 Betroffene*r</button></div><div class="pc-con on" id="pc${i}sp"><span class="sp">${d.sp.n}</span>${d.sp.t}</div><div class="pc-con" id="pc${i}af"><span class="sp">${d.af.n}</span>${d.af.t}</div><div style="padding:0 .85rem .85rem"><div class="rq">\u2753 ${d.q}</div><div class="chs" id="rc${i}">${d.ch.map(c=>`<button class="ch" data-c="${c.c}" onclick="cRef(${i},this)">${c.t}</button>`).join('')}</div><div class="rfb" id="rf${i}"></div></div></div>`;});}
+w.innerHTML+=`<div class="pc" id="pc${i}"><div class="pc-scene">${d.scene}</div><div class="pc-tabs"><button class="pc-tab on" onclick="stab(${i},'sp',this)">🗣️ Was er denkt</button><button class="pc-tab" onclick="stab(${i},'af',this)">💔 Wie sie fühlt</button></div><div class="pc-con on" id="pc${i}sp"><span class="sp">${d.sp.n}</span>${d.sp.t}</div><div class="pc-con" id="pc${i}af"><span class="sp">${d.af.n}</span>${d.af.t}</div><div style="padding:0 .9rem .9rem"><div class="rq">❓ ${d.q}</div><div class="chs" id="rc${i}">${d.ch.map(c=>`<button class="ch" data-c="${c.c}" onclick="cRef(${i},this)">${c.t}</button>`).join('')}</div><div class="rfb" id="rf${i}"></div></div></div>`;});}
 let s2d=0;
-function stab(i,w){const c=document.getElementById('pc'+i);c.querySelectorAll('.pc-tab').forEach(t=>t.classList.remove('on'));c.querySelectorAll('.pc-con').forEach(t=>t.classList.remove('on'));document.getElementById('pc'+i+w).classList.add('on');event.target.classList.add('on');}
+function stab(i,w,btn){const c=document.getElementById('pc'+i);c.querySelectorAll('.pc-tab').forEach(t=>t.classList.remove('on'));c.querySelectorAll('.pc-con').forEach(t=>t.classList.remove('on'));document.getElementById('pc'+i+w).classList.add('on');btn.classList.add('on');}
 function cRef(i,btn){const ct=document.getElementById('rc'+i),fb=document.getElementById('rf'+i),ok=btn.dataset.c==='1';
 ct.querySelectorAll('.ch').forEach(b=>{b.disabled=true;if(b.dataset.c==='1')b.classList.add('cg');else if(b===btn&&!ok)b.classList.add('cb')});
 fb.className='rfb on '+(ok?'g':'r');fb.textContent=ok?PD[i].gf:PD[i].bf;
-s2d++;if(s2d>=PD.length){show('f2','fg','\uD83D\uDC4F Die Wirkung z\u00E4hlt mehr als die Absicht!');document.getElementById('b2').disabled=false}}
+s2d++;if(s2d>=PD.length){show('f2','fg','👏 Die Wirkung zählt mehr als die Absicht!');document.getElementById('b2').disabled=false}}
 
 /* Render Station 3 */
 function r3(){const w=document.getElementById('refWrap');RD.forEach((d,i)=>{
-w.innerHTML+=`<div class="rc" id="rc2${i}"><div class="rc-bad">\u274C ${d.bad}</div><div class="rc-lbl">Welche Alternative ist respektvoll?</div>${d.opts.map((o,j)=>`<button class="rf-btn" data-c="${o.c}" onclick="cRf(${i},this)">${o.t}</button>`).join('')}<div class="rf-fb" id="rff${i}"></div></div>`;});}
+w.innerHTML+=`<div class="rc" id="rc2${i}"><div class="rc-bad">❌ ${d.bad}</div><div class="rc-lbl">Welcher Satz ist besser?</div>${d.opts.map((o,j)=>`<button class="rf-btn" data-c="${o.c}" onclick="cRf(${i},this)">${o.t}</button>`).join('')}<div class="rf-fb" id="rff${i}"></div></div>`;});}
 let s3d=0;
 function cRf(i,btn){const cd=document.getElementById('rc2'+i),fb=document.getElementById('rff'+i),ok=btn.dataset.c==='1';
 cd.querySelectorAll('.rf-btn').forEach(b=>{b.disabled=true;if(b.dataset.c==='1')b.classList.add('rfg');else if(b===btn&&!ok)b.classList.add('rfb')});
 fb.className='rf-fb on '+(ok?'g':'r');fb.textContent=ok?RD[i].gf:RD[i].bf;
-s3d++;if(s3d>=RD.length){show('f3','fg','\uD83C\uDFAF Bessere Worte sind der erste Schritt!');document.getElementById('b3').disabled=false}}
+s3d++;if(s3d>=RD.length){show('f3','fg','🎯 Bessere Worte – ein wichtiger erster Schritt!');document.getElementById('b3').disabled=false}}
 
 function show(id,cls,txt){const e=document.getElementById(id);e.className='fb on '+cls;e.textContent=txt}
 function complete(n){if(!dn.includes(n))dn.push(n);if(n<T){cur=n+1;ui();scr()}else{ui();document.getElementById('comp').classList.add('on');scr()}}
