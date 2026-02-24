@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>✊ HS1 – Was ist Rassismus?</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,600;9..40,700;9..40,800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+        :root{
+            --ac:#C4553A;--ac-l:#E07B5F;--ac-d:#9B3D27;--ac-pale:#FCEAE5;
+            --sage:#6B8F71;--sage-l:#8FB996;--ocker:#D4A24E;
+            --sand:#F5EDE3;--cream:#FFFDF8;
+            --text:#2C2416;--tm:#5C4F3D;--tl:#8A7E6B;
+            --w:#FFFFFF;--g:#4CAF50;--gp:#E8F5E9;
+            --r:#E53935;--rp:#FFEBEE;
+            --sh:0 4px 16px rgba(44,36,22,.07);
+            --rd:18px;--rds:12px;
+        }
+        html{font-size:16px;scroll-behavior:smooth}
+        body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);min-height:100vh;padding-bottom:88px}
+
+```
+    /* ── Topbar ── */
+    .top{position:sticky;top:0;z-index:100;padding:.5rem .75rem;
+        background:linear-gradient(135deg,var(--ac-d),var(--ac),var(--ac-l));
+        box-shadow:0 2px 10px rgba(196,85,58,.2)}
+    .top-in{display:flex;align-items:center;justify-content:space-between;max-width:600px;margin:0 auto}
+    .top a{color:var(--w);text-decoration:none;font-weight:600;font-size:.78rem;
+        padding:.3rem .6rem;background:rgba(255,255,255,.18);border-radius:50px;display:flex;align-items:center;gap:.2rem}
+    .top-t{display:flex;align-items:center;gap:.35rem;color:var(--w)}
+    .top-t h1{font-size:.9rem;font-weight:700}
+    .top-tag{font-size:.62rem;font-weight:700;background:rgba(255,255,255,.2);color:var(--w);padding:.15rem .45rem;border-radius:50px}
+
+    /* ── Progress ── */
+    .prog{background:var(--w);padding:.5rem 1rem;border-bottom:1px solid var(--sand)}
+    .prog-in{max-width:600px;margin:0 auto;display:flex;align-items:center;gap:.75rem}
+    .prog-dots{display:flex;gap:.4rem;flex:1;justify-content:center}
+    .dot{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+        font-size:.72rem;font-weight:700;background:var(--sand);color:var(--tl);
+        transition:all .35s cubic-bezier(.34,1.56,.64,1);cursor:pointer;border:2px solid transparent}
+    .dot.active{background:var(--ac);color:var(--w);transform:scale(1.15);border-color:var(--ac-l)}
+    .dot.done{background:var(--g);color:var(--w);border-color:transparent}
+    .dot.done::after{content:'✓'}
+    .dot.lock{opacity:.35;pointer-events:none}
+    .prog-bar{width:60px;height:6px;background:var(--sand);border-radius:3px;overflow:hidden}
+    .prog-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--ac),var(--ocker));border-radius:3px;transition:width .5s ease}
+
+    /* ── Container ── */
+    .ct{max-width:600px;margin:0 auto;padding:1rem}
+
+    /* ── Station ── */
+    .st{display:none}
+    .st.on{display:block;animation:stIn .45s ease}
+    @keyframes stIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+
+    /* ── Station Header ── */
+    .sth{
+        text-align:center;margin-bottom:1rem;padding:1.1rem;
+        background:var(--w);border-radius:var(--rd);box-shadow:var(--sh);
+        position:relative;overflow:hidden;
+    }
+    .sth::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;
+        background:linear-gradient(90deg,var(--ac),var(--ocker),var(--sage))}
+    .sth .em{font-size:2.2rem;margin-bottom:.3rem;display:block;animation:bounce 2s ease-in-out infinite}
+    @keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+    .sth h2{font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:800;margin-bottom:.25rem}
+    .sth p{font-size:.82rem;color:var(--tm);line-height:1.45}
+
+    /* ── Card ── */
+    .cd{background:var(--w);border-radius:var(--rd);padding:1rem;margin-bottom:.7rem;box-shadow:var(--sh)}
+    .cd h3{font-size:.9rem;font-weight:700;margin-bottom:.4rem;display:flex;align-items:center;gap:.3rem}
+    .cd p{font-size:.82rem;color:var(--tm);line-height:1.5}
+
+    /* ── Drag Items ── */
+    .pool{display:flex;flex-wrap:wrap;gap:.4rem;padding:.6rem;background:var(--sand);border-radius:var(--rds);margin-bottom:.7rem;min-height:44px}
+    .di{padding:.45rem .7rem;border-radius:10px;font-size:.78rem;font-weight:600;
+        background:var(--w);color:var(--text);cursor:grab;touch-action:none;
+        user-select:none;-webkit-user-select:none;border:2px solid var(--sand);
+        transition:all .2s ease;box-shadow:0 1px 4px rgba(0,0,0,.05)}
+    .di:active{cursor:grabbing;transform:scale(1.05);box-shadow:0 4px 14px rgba(0,0,0,.12)}
+    .di.ok{background:var(--gp);border-color:var(--g);color:#2E7D32}
+    .di.no{background:var(--rp);border-color:var(--r);color:var(--r);animation:shake .35s ease}
+    @keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+
+    .zones{display:grid;grid-template-columns:1fr 1fr;gap:.5rem}
+    .zone-wrap{text-align:center}
+    .zone-lbl{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;margin-bottom:.2rem}
+    .zone-lbl.zn{color:var(--sage)}
+    .zone-lbl.zm{color:var(--r)}
+    .zone{min-height:54px;padding:.35rem;border-radius:var(--rds);border:2px dashed;
+        transition:all .25s ease;display:flex;flex-wrap:wrap;gap:.3rem;align-content:flex-start}
+    .zone.zn{border-color:rgba(107,143,113,.3);background:rgba(107,143,113,.04)}
+    .zone.zm{border-color:rgba(229,57,53,.15);background:rgba(229,57,53,.03)}
+    .zone.over{transform:scale(1.02);border-style:solid}
+    .zone.zn.over{border-color:var(--sage);background:rgba(107,143,113,.1)}
+    .zone.zm.over{border-color:var(--r);background:rgba(229,57,53,.08)}
+
+    /* ── Story ── */
+    .story{background:linear-gradient(135deg,var(--ac-pale),var(--w));border-radius:var(--rd);padding:1rem;margin-bottom:.7rem;border-left:4px solid var(--ac)}
+    .story .who{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--ac);margin-bottom:.3rem}
+    .story .txt{font-size:.88rem;line-height:1.6;color:var(--text);font-style:italic}
+
+    /* ── Choices ── */
+    .chs{display:flex;flex-direction:column;gap:.4rem;margin-top:.6rem}
+    .ch{padding:.65rem .85rem;border-radius:var(--rds);border:2px solid var(--sand);background:var(--w);
+        font-size:.82rem;font-weight:600;color:var(--text);cursor:pointer;text-align:left;
+        font-family:inherit;transition:all .2s ease}
+    .ch:active{transform:scale(.98)}
+    .ch.cg{border-color:var(--g);background:var(--gp);color:#2E7D32}
+    .ch.cb{border-color:var(--r);background:var(--rp);color:var(--r)}
+    .ch.cs{border-color:var(--ocker);background:#FFFBEB;color:var(--ocker)}
+    .ch:disabled{cursor:default}
+
+    /* ── Feedback ── */
+    .fb{padding:.7rem;border-radius:var(--rds);margin-top:.5rem;display:none;font-size:.82rem;line-height:1.45;
+        animation:fbIn .3s ease}
+    .fb.on{display:block}
+    @keyframes fbIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+    .fb.fg{background:var(--gp);color:#2E7D32;border:1px solid rgba(76,175,80,.2)}
+    .fb.fr{background:var(--rp);color:var(--r);border:1px solid rgba(229,57,53,.15)}
+    .fb.fn{background:var(--sand);color:var(--tm)}
+
+    /* ── Scenario ── */
+    .scn{background:var(--w);border-radius:var(--rd);padding:1rem;margin-bottom:.7rem;box-shadow:var(--sh);border:2px solid var(--sand)}
+    .scn .scene{font-size:.85rem;line-height:1.55;padding-bottom:.6rem;border-bottom:1px solid var(--sand);margin-bottom:.6rem}
+    .scn h4{font-size:.82rem;font-weight:700;margin-bottom:.4rem}
+
+    /* ── Complete Button ── */
+    .done-btn{display:flex;align-items:center;justify-content:center;gap:.4rem;width:100%;
+        padding:.85rem;margin-top:1rem;
+        background:linear-gradient(135deg,var(--g),var(--sage-l));color:var(--w);
+        border:none;border-radius:var(--rds);font-size:.9rem;font-weight:700;
+        cursor:pointer;font-family:inherit;transition:all .3s ease}
+    .done-btn:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(76,175,80,.25)}
+    .done-btn:disabled{background:#CBD5E0;cursor:not-allowed;transform:none;box-shadow:none}
+
+    /* ── Float Nav ── */
+    .fnav{position:fixed;bottom:1rem;left:50%;transform:translateX(-50%);
+        display:flex;gap:.5rem;align-items:center;
+        background:var(--w);padding:.45rem;border-radius:50px;
+        box-shadow:0 4px 20px rgba(44,36,22,.13);z-index:200}
+    .fnav button{width:40px;height:40px;border-radius:50%;border:none;background:var(--sand);
+        font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;
+        transition:all .25s ease;font-family:inherit}
+    .fnav button:hover:not(:disabled){background:var(--ac);color:var(--w)}
+    .fnav button:disabled{opacity:.3;cursor:not-allowed}
+    .fnav .nl{font-size:.78rem;font-weight:700;color:var(--text);padding:0 .5rem}
+
+    /* ── Completion ── */
+    .comp{display:none;text-align:center;padding:2rem 1.25rem;background:var(--w);border-radius:var(--rd);box-shadow:var(--sh)}
+    .comp.on{display:block;animation:stIn .5s ease}
+    .comp .be{font-size:3.5rem;margin-bottom:.6rem;animation:bounce 2s ease-in-out infinite}
+    .comp h2{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--g);margin-bottom:.4rem}
+    .comp p{font-size:.88rem;color:var(--tm);line-height:1.5;margin-bottom:1.2rem}
+    .comp a{display:inline-flex;align-items:center;gap:.3rem;padding:.6rem 1.25rem;background:var(--ac);color:var(--w);border-radius:50px;text-decoration:none;font-weight:700;font-size:.82rem;transition:transform .2s ease}
+    .comp a:active{transform:scale(.96)}
+</style>
+```
+
+</head>
+<body>
+
+<header class="top"><div class="top-in">
+    <a href="index.html">← Zurück</a>
+    <div class="top-t"><span>✊</span><h1>Was ist Rassismus?</h1></div>
+    <span class="top-tag">HS1</span>
+</div></header>
+
+<div class="prog"><div class="prog-in">
+    <div class="prog-dots" id="dots">
+        <div class="dot active" data-s="1" onclick="go(1)">1</div>
+        <div class="dot lock" data-s="2" onclick="go(2)">2</div>
+        <div class="dot lock" data-s="3" onclick="go(3)">3</div>
+    </div>
+    <div class="prog-bar"><div class="prog-fill" id="pf"></div></div>
+</div></div>
+
+<main class="ct">
+
+<!-- ═══ S1: Alle anders, alle gleich ═══ -->
+
+<section class="st on" id="s1">
+    <div class="sth"><span class="em">🌍</span><h2>Alle anders, alle gleich</h2><p>Menschen sind verschieden – und das ist gut! Aber manche Dinge verletzen. Kannst du das unterscheiden?</p></div>
+    <div class="cd"><h3>🎯 Aufgabe</h3><p>Ziehe jede Aussage in das richtige Feld: <strong>Normal & okay</strong> oder <strong>Gemein & verletzend</strong>?</p></div>
+    <div class="cd">
+        <div class="pool" id="pool">
+            <div class="di" draggable="true" data-a="n" data-id="1">Amina trägt ein Kopftuch</div>
+            <div class="di" draggable="true" data-a="m" data-id="2">„Geh zurück in dein Land!"</div>
+            <div class="di" draggable="true" data-a="n" data-id="3">Luca hat eine andere Hautfarbe</div>
+            <div class="di" draggable="true" data-a="m" data-id="4">Jemanden wegen seines Namens auslachen</div>
+            <div class="di" draggable="true" data-a="n" data-id="5">Zu Hause wird eine andere Sprache gesprochen</div>
+            <div class="di" draggable="true" data-a="m" data-id="6">„Ihr Ausländer seid alle gleich!"</div>
+            <div class="di" draggable="true" data-a="n" data-id="7">Kerem feiert ein anderes Fest als Weihnachten</div>
+            <div class="di" draggable="true" data-a="m" data-id="8">Jemanden nicht mitspielen lassen, weil er anders aussieht</div>
+        </div>
+        <div class="zones">
+            <div class="zone-wrap"><div class="zone-lbl zn">✅ Normal & okay</div><div class="zone zn" id="zN" data-z="n"></div></div>
+            <div class="zone-wrap"><div class="zone-lbl zm">❌ Gemein & verletzend</div><div class="zone zm" id="zM" data-z="m"></div></div>
+        </div>
+    </div>
+    <div class="fb" id="f1"></div>
+    <button class="done-btn" id="b1" disabled onclick="complete(1)">Station abschließen ✓</button>
+</section>
+
+<!-- ═══ S2: So fühlt sich das an ═══ -->
+
+<section class="st" id="s2">
+    <div class="sth"><span class="em">💔</span><h2>So fühlt sich das an</h2><p>Lies die Geschichten und versuche, dich in die Kinder hineinzuversetzen.</p></div>
+
+```
+<div class="story"><div class="who">🗣️ Amira erzählt:</div><p class="txt">„Ein Junge hat zu mir gesagt: ‚Du gehörst hier nicht hin!' Dabei bin ich hier geboren. Ich habe mich so klein gefühlt."</p></div>
+<div class="cd"><h3>❓ Wie fühlt sich Amira?</h3><div class="chs" id="q1"><button class="ch" data-c="1" onclick="pick(this,'q1')">😢 Traurig und ausgeschlossen</button><button class="ch" data-c="0" onclick="pick(this,'q1')">😄 Fröhlich</button><button class="ch" data-c="0" onclick="pick(this,'q1')">😐 Egal</button></div><div class="fb" id="fq1"></div></div>
+
+<div class="story"><div class="who">🗣️ Emre erzählt:</div><p class="txt">„Wenn ich sage, dass ich Türke bin, rufen manche ‚Döner!'. Das soll lustig sein, aber ich fühle mich wie ein Witz."</p></div>
+<div class="cd"><h3>❓ Warum ist das nicht witzig?</h3><div class="chs" id="q2"><button class="ch" data-c="0" onclick="pick(this,'q2')">Emre hat keinen Humor</button><button class="ch" data-c="1" onclick="pick(this,'q2')">Er wird auf seine Herkunft reduziert</button><button class="ch" data-c="0" onclick="pick(this,'q2')">Emre mag keinen Döner</button></div><div class="fb" id="fq2"></div></div>
+
+<div class="story"><div class="who">🗣️ Lina erzählt:</div><p class="txt">„Jemand sagte: ‚Du sprichst aber gut Deutsch!' Das klingt nett, fühlt sich aber komisch an – als wäre es überraschend."</p></div>
+<div class="cd"><h3>❓ Was ist daran problematisch?</h3><div class="chs" id="q3"><button class="ch" data-c="0" onclick="pick(this,'q3')">Nichts – war ein Kompliment</button><button class="ch" data-c="1" onclick="pick(this,'q3')">Lina wird automatisch als „fremd" gesehen</button><button class="ch" data-c="0" onclick="pick(this,'q3')">Lina sollte sich freuen</button></div><div class="fb" id="fq3"></div></div>
+
+<div class="fb" id="f2"></div>
+<button class="done-btn" id="b2" disabled onclick="complete(2)">Station abschließen ✓</button>
+```
+
+</section>
+
+<!-- ═══ S3: Was kannst du tun? ═══ -->
+
+<section class="st" id="s3">
+    <div class="sth"><span class="em">💪</span><h2>Was kannst du tun?</h2><p>In diesen Situationen kannst du etwas bewirken!</p></div>
+
+```
+<div class="scn"><div class="scene"><strong>Situation 1:</strong> Jemand sagt zu Yusuf: „Du bist kein echter Deutscher!" Yusuf schaut traurig auf den Boden.</div><h4>Was tust du?</h4><div class="chs" id="x1"><button class="ch" data-p="0" onclick="act(this,'x1')">🤷 Nichts – geht mich nichts an</button><button class="ch" data-p="2" onclick="act(this,'x1')">🗣️ „Hey, das stimmt nicht! Yusuf gehört hierher."</button><button class="ch" data-p="1" onclick="act(this,'x1')">🤝 Leise zu Yusuf: „Das war nicht okay."</button></div><div class="fb" id="fx1"></div></div>
+
+<div class="scn"><div class="scene"><strong>Situation 2:</strong> In der WhatsApp-Gruppe teilt jemand ein rassistisches Meme. Manche schicken 😂.</div><h4>Was tust du?</h4><div class="chs" id="x2"><button class="ch" data-p="0" onclick="act(this,'x2')">😂 Mitlachen</button><button class="ch" data-p="1" onclick="act(this,'x2')">🚫 Ignorieren</button><button class="ch" data-p="2" onclick="act(this,'x2')">✋ „Das ist nicht lustig. Das verletzt Menschen."</button></div><div class="fb" id="fx2"></div></div>
+
+<div class="scn"><div class="scene"><strong>Situation 3:</strong> Deine Freundin will ein Mädchen nicht einladen, „weil die aus Syrien kommt und bestimmt komisches Essen isst."</div><h4>Was tust du?</h4><div class="chs" id="x3"><button class="ch" data-p="0" onclick="act(this,'x3')">🤐 Nichts sagen</button><button class="ch" data-p="2" onclick="act(this,'x3')">💬 „Das ist unfair. Lade sie ein!"</button><button class="ch" data-p="1" onclick="act(this,'x3')">🤔 „Wie würdest du dich fühlen?"</button></div><div class="fb" id="fx3"></div></div>
+
+<div class="fb" id="f3"></div>
+<button class="done-btn" id="b3" disabled onclick="complete(3)">🎉 Alle Stationen geschafft!</button>
+```
+
+</section>
+
+<div class="comp" id="comp"><div class="be">🎉</div><h2>Super gemacht!</h2><p>Ihr wisst jetzt: Unterschiede machen uns besonders – und jede*r kann etwas gegen Ausgrenzung tun. Zeit für euren Fotocomic!</p><a href="index.html">← Zurück zur Übersicht</a></div>
+</main>
+
+<nav class="fnav">
+    <button onclick="goPrev()" id="bp" disabled>◀</button>
+    <div class="nl"><span id="cl">1</span> / 3</div>
+    <button onclick="goNext()" id="bn" disabled>▶</button>
+</nav>
+
+<script>
+let cur=1,T=3,done=[];
+
+/* ── Drag & Drop ── */
+let _d=null,sorted=0,TOTAL=8;
+document.querySelectorAll('.di').forEach(el=>{
+    el.addEventListener('dragstart',()=>{_d=el;el.style.opacity='.4'});
+    el.addEventListener('dragend',()=>{el.style.opacity='1';_d=null;document.querySelectorAll('.zone').forEach(z=>z.classList.remove('over'))});
+    let tc,ox,oy;
+    el.addEventListener('touchstart',e=>{_d=el;const t=e.touches[0],r=el.getBoundingClientRect();ox=t.clientX-r.left;oy=t.clientY-r.top;tc=el.cloneNode(true);tc.style.cssText=`position:fixed;z-index:999;pointer-events:none;opacity:.8;width:${r.width}px;font-size:.78rem;`;document.body.appendChild(tc);el.style.opacity='.3'},{passive:true});
+    el.addEventListener('touchmove',e=>{e.preventDefault();if(!tc)return;const t=e.touches[0];tc.style.left=(t.clientX-ox)+'px';tc.style.top=(t.clientY-oy)+'px'},{passive:false});
+    el.addEventListener('touchend',e=>{if(tc){tc.remove();tc=null}el.style.opacity='1';const t=e.changedTouches[0],hit=document.elementFromPoint(t.clientX,t.clientY)?.closest('.zone');if(hit&&_d)drop(hit);_d=null});
+});
+document.querySelectorAll('.zone').forEach(z=>{
+    z.addEventListener('dragover',e=>{e.preventDefault();z.classList.add('over')});
+    z.addEventListener('dragleave',()=>z.classList.remove('over'));
+    z.addEventListener('drop',e=>{e.preventDefault();z.classList.remove('over');drop(z)});
+});
+function drop(z){
+    if(!_d||_d.classList.contains('ok'))return;
+    if(_d.dataset.a===z.dataset.z){z.appendChild(_d);_d.classList.add('ok');_d.draggable=false;sorted++;
+    if(sorted===TOTAL){show('f1','fg','🎉 Toll! Unterschiede sind normal – aber niemand darf deswegen ausgeschlossen werden.');document.getElementById('b1').disabled=false}}
+    else{_d.classList.add('no');setTimeout(()=>_d.classList.remove('no'),500)}
+}
+
+/* ── Story Choices ── */
+const QFB={q1:{g:'✅ Genau. Amira fühlt sich traurig und ausgeschlossen.',b:'❌ Überleg: Wie wäre das für dich?'},q2:{g:'✅ Richtig. Emre ist mehr als seine Herkunft.',b:'❌ Versuch, dich in Emre hineinzuversetzen.'},q3:{g:'✅ Genau – der Satz zeigt ein Vorurteil.',b:'❌ Auch nett Gemeintes kann verletzen.'}};
+let qDone=0;
+function pick(btn,q){
+    const ct=document.getElementById(q),c=btn.dataset.c==='1';
+    ct.querySelectorAll('.ch').forEach(b=>{b.disabled=true;if(b.dataset.c==='1')b.classList.add('cg');else if(b===btn&&!c)b.classList.add('cb')});
+    show('f'+q,c?'fg':'fr',c?QFB[q].g:QFB[q].b);
+    qDone++;if(qDone>=3){show('f2','fn','👏 Alle Geschichten besprochen. Jeder Mensch verdient Respekt!');document.getElementById('b2').disabled=false}
+}
+
+/* ── Scenarios ── */
+const SFB={x1:{0:'🤔 Wegschauen hilft nicht.',1:'👍 Leise Unterstützung ist gut!',2:'💪 Super! Du zeigst Haltung!'},x2:{0:'🤔 Mitlachen verbreitet Hass.',1:'👍 Besser als mitmachen – aber sag auch was!',2:'💪 Stark! Du zeigst Zivilcourage!'},x3:{0:'🤔 Schweigen = Zustimmung.',1:'👍 Du bringst sie zum Nachdenken!',2:'💪 Du sprichst es direkt an!'}};
+let xDone=0;
+function act(btn,q){
+    const ct=document.getElementById(q),p=parseInt(btn.dataset.p);
+    ct.querySelectorAll('.ch').forEach(b=>{b.disabled=true;const bp=parseInt(b.dataset.p);if(bp===2)b.classList.add('cg');else if(b===btn&&p<2)b.classList.add(p===0?'cb':'cs')});
+    show('f'+q,p===2?'fg':p===1?'fn':'fr',SFB[q][p]);
+    xDone++;if(xDone>=3){show('f3','fn','🎯 Jede noch so kleine Handlung zählt!');document.getElementById('b3').disabled=false}
+}
+
+/* ── Helpers ── */
+function show(id,cls,txt){const e=document.getElementById(id);e.className='fb on '+cls;e.textContent=txt}
+function complete(n){if(!done.includes(n))done.push(n);if(n<T){cur=n+1;ui();scr()}else{ui();document.getElementById('comp').classList.add('on');scr()}}
+function go(n){if(n>1&&!done.includes(n-1))return;cur=n;ui();scr()}
+function goPrev(){if(cur>1){cur--;ui();scr()}}
+function goNext(){if(cur<T&&done.includes(cur)){cur++;ui();scr()}}
+function scr(){window.scrollTo({top:0,behavior:'smooth'})}
+function ui(){
+    document.querySelectorAll('.st').forEach(s=>s.classList.remove('on'));
+    const el=document.getElementById('s'+cur);if(el)el.classList.add('on');
+    document.querySelectorAll('.dot').forEach(d=>{const s=+d.dataset.s;d.className='dot';d.textContent=s;
+        if(done.includes(s)){d.classList.add('done');d.textContent=''}
+        else if(s===cur)d.classList.add('active');
+        else if(s>1&&!done.includes(s-1))d.classList.add('lock')});
+    document.getElementById('pf').style.width=Math.round(done.length/T*100)+'%';
+    document.getElementById('cl').textContent=cur;
+    document.getElementById('bp').disabled=cur<=1;
+    document.getElementById('bn').disabled=cur>=T||!done.includes(cur);
+    if(done.length===T){document.querySelectorAll('.st').forEach(s=>s.classList.remove('on'));document.getElementById('comp').classList.add('on')}
+}
+</script>
+
+</body>
+</html>

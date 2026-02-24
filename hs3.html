@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>✊ HS3 – Rassismus hat Folgen</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,600;9..40,700;9..40,800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+        :root{--ac:#6B8F71;--ac-l:#8FB996;--ac-d:#4A7050;--ac-p:#EFF6F0;--terra:#C4553A;--ocker:#D4A24E;--sand:#F5EDE3;--cream:#FFFDF8;--text:#2C2416;--tm:#5C4F3D;--tl:#8A7E6B;--w:#FFFFFF;--g:#4CAF50;--gp:#E8F5E9;--r:#E53935;--rp:#FFEBEE;--pur:#7B61C1;--purp:#F3EEFF;--amb:#F59E0B;--ambp:#FFFBEB;--sh:0 4px 16px rgba(44,36,22,.07);--rd:18px;--rds:12px}
+        html{font-size:16px;scroll-behavior:smooth}
+        body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);min-height:100vh;padding-bottom:88px}
+        .top{position:sticky;top:0;z-index:100;padding:.5rem .75rem;background:linear-gradient(135deg,var(--ac-d),var(--ac),var(--ac-l));box-shadow:0 2px 10px rgba(107,143,113,.2)}
+        .top-in{display:flex;align-items:center;justify-content:space-between;max-width:600px;margin:0 auto}
+        .top a{color:var(--w);text-decoration:none;font-weight:600;font-size:.78rem;padding:.3rem .6rem;background:rgba(255,255,255,.18);border-radius:50px;display:flex;align-items:center;gap:.2rem}
+        .top-t{display:flex;align-items:center;gap:.35rem;color:var(--w)}.top-t h1{font-size:.9rem;font-weight:700}
+        .top-tag{font-size:.62rem;font-weight:700;background:rgba(255,255,255,.2);color:var(--w);padding:.15rem .45rem;border-radius:50px}
+        .prog{background:var(--w);padding:.5rem 1rem;border-bottom:1px solid var(--sand)}
+        .prog-in{max-width:600px;margin:0 auto;display:flex;align-items:center;gap:.75rem}
+        .prog-dots{display:flex;gap:.4rem;flex:1;justify-content:center}
+        .dot{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;background:var(--sand);color:var(--tl);transition:all .35s cubic-bezier(.34,1.56,.64,1);cursor:pointer;border:2px solid transparent}
+        .dot.active{background:var(--ac);color:var(--w);transform:scale(1.15);border-color:var(--ac-l)}
+        .dot.done{background:var(--g);color:var(--w)}.dot.done::after{content:'✓'}
+        .dot.lock{opacity:.35;pointer-events:none}
+        .prog-bar{width:60px;height:6px;background:var(--sand);border-radius:3px;overflow:hidden}
+        .prog-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--ac),var(--ocker));border-radius:3px;transition:width .5s ease}
+        .ct{max-width:600px;margin:0 auto;padding:1rem}
+        .st{display:none}.st.on{display:block;animation:stIn .45s ease}
+        @keyframes stIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+        .sth{text-align:center;margin-bottom:1rem;padding:1.1rem;background:var(--w);border-radius:var(--rd);box-shadow:var(--sh);position:relative;overflow:hidden}
+        .sth::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--ac),var(--ocker),var(--terra))}
+        .sth .em{font-size:2.2rem;margin-bottom:.3rem;display:block;animation:bounce 2s ease-in-out infinite}
+        @keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+        .sth h2{font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:800;margin-bottom:.25rem}
+        .sth p{font-size:.82rem;color:var(--tm);line-height:1.45}
+        .tw{background:var(--ambp);border:2px solid var(--amb);border-radius:var(--rds);padding:.7rem;margin-bottom:.8rem;display:flex;align-items:flex-start;gap:.4rem}
+        .tw .twi{font-size:1.1rem;flex-shrink:0}.tw p{font-size:.75rem;color:var(--tm);line-height:1.4}.tw strong{color:var(--text)}
+        /* Case */
+        .case{background:var(--w);border-radius:var(--rd);overflow:hidden;margin-bottom:.8rem;box-shadow:var(--sh);border-left:4px solid var(--ac)}
+        .case-h{padding:.85rem;border-bottom:1px solid var(--sand)}
+        .case-h .cn{font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--ac);margin-bottom:.2rem}
+        .case-h .cs{font-size:.82rem;line-height:1.55}
+        .cpool{padding:.5rem .85rem;background:var(--sand);display:flex;flex-wrap:wrap;gap:.3rem;min-height:36px}
+        .ci{padding:.35rem .6rem;border-radius:8px;font-size:.72rem;font-weight:600;cursor:grab;touch-action:none;user-select:none;-webkit-user-select:none;transition:all .2s ease;border:2px solid transparent}
+        .ci[data-c="body"]{background:var(--purp);color:var(--pur)}
+        .ci[data-c="feelings"]{background:var(--rp);color:var(--r)}
+        .ci[data-c="daily"]{background:var(--ambp);color:var(--amb)}
+        .ci[data-c="future"]{background:var(--ac-p);color:var(--ac-d)}
+        .ci:active{transform:scale(1.05);box-shadow:0 3px 10px rgba(0,0,0,.1)}
+        .ci.ok{border-color:var(--g)}.ci.no{border-color:var(--r);animation:shake .35s ease}
+        @keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+        .ci.set{opacity:.7;cursor:default}
+        .czones{padding:.6rem;display:grid;grid-template-columns:1fr 1fr;gap:.4rem}
+        @media(min-width:500px){.czones{grid-template-columns:repeat(4,1fr)}}
+        .dz{min-height:60px;padding:.3rem;border-radius:var(--rds);border:2px dashed rgba(107,143,113,.3);background:rgba(107,143,113,.03);transition:all .25s ease;display:flex;flex-wrap:wrap;gap:.25rem;align-content:flex-start}
+        .dz.over{transform:scale(1.02);border-style:solid;border-color:var(--ac);background:var(--ac-p)}
+        .zl{font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;text-align:center;margin-bottom:.15rem;padding:.1rem}
+        .zl.zb{color:var(--pur)}.zl.zf{color:var(--r)}.zl.za{color:var(--amb)}.zl.zfu{color:var(--ac-d)}
+        /* Decision */
+        .dc{background:var(--w);border-radius:var(--rd);padding:1rem;margin-bottom:.8rem;box-shadow:var(--sh);border:2px solid var(--sand)}
+        .ds{padding:.7rem;background:var(--ac-p);border-radius:var(--rds);margin-bottom:.7rem;font-size:.85rem;line-height:1.5;border-left:3px solid var(--ac)}
+        .chs{display:flex;flex-direction:column;gap:.35rem}
+        .ch{padding:.6rem .8rem;border-radius:var(--rds);border:2px solid var(--sand);background:var(--w);font-size:.8rem;font-weight:600;color:var(--text);cursor:pointer;text-align:left;font-family:inherit;transition:all .2s ease}
+        .ch:active{transform:scale(.98)}.ch:disabled{cursor:default}
+        .ch.best{border-color:var(--g);background:var(--gp);color:#2E7D32}
+        .ch.okc{border-color:var(--ocker);background:var(--ambp);color:var(--ocker)}
+        .ch.bad{border-color:var(--r);background:var(--rp);color:var(--r)}
+        .cr{margin-top:.5rem;padding:.7rem;border-radius:var(--rds);display:none;font-size:.8rem;line-height:1.5}
+        .cr.on{display:block;animation:fbIn .35s ease}
+        @keyframes fbIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+        .cr.best-r{background:var(--gp);color:#2E7D32}.cr.ok-r{background:var(--ambp);color:var(--ocker)}.cr.bad-r{background:var(--rp);color:var(--r)}
+        /* Arguments */
+        .exc{background:var(--ac-p);border-radius:var(--rds);padding:.7rem;margin-bottom:.6rem;text-align:center;border:2px solid rgba(107,143,113,.15)}
+        .exc .eq{font-size:.92rem;font-weight:700;color:var(--r);font-style:italic;margin-bottom:.2rem}
+        .exc .et{font-size:.72rem;color:var(--tm)}
+        .ab{padding:.6rem .8rem;border-radius:var(--rds);border:2px solid var(--sand);background:var(--w);font-size:.8rem;font-weight:600;color:var(--text);cursor:pointer;text-align:left;font-family:inherit;transition:all .2s ease;display:block;width:100%;margin-bottom:.3rem}
+        .ab:active{transform:scale(.98)}.ab:disabled{cursor:default}
+        .ab.strong{border-color:var(--g);background:var(--gp);color:#2E7D32}
+        .ab.weak{border-color:var(--r);background:var(--rp);color:var(--r)}
+        .afb{margin-top:.2rem;padding:.5rem;border-radius:var(--rds);font-size:.78rem;line-height:1.4;display:none}
+        .afb.on{display:block;animation:fbIn .3s ease}
+        .afb.g{background:var(--gp);color:#2E7D32}.afb.r{background:var(--rp);color:var(--r)}
+        .cd{background:var(--w);border-radius:var(--rd);padding:1rem;margin-bottom:.7rem;box-shadow:var(--sh)}
+        .fb{padding:.7rem;border-radius:var(--rds);margin-top:.5rem;display:none;font-size:.82rem;line-height:1.45}
+        .fb.on{display:block;animation:fbIn .3s ease}.fb.fg{background:var(--gp);color:#2E7D32}.fb.fn{background:var(--sand);color:var(--tm)}
+        .done-btn{display:flex;align-items:center;justify-content:center;gap:.4rem;width:100%;padding:.85rem;margin-top:1rem;background:linear-gradient(135deg,var(--g),var(--ac-l));color:var(--w);border:none;border-radius:var(--rds);font-size:.9rem;font-weight:700;cursor:pointer;font-family:inherit;transition:all .3s ease}
+        .done-btn:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(76,175,80,.25)}
+        .done-btn:disabled{background:#CBD5E0;cursor:not-allowed;transform:none;box-shadow:none}
+        .fnav{position:fixed;bottom:1rem;left:50%;transform:translateX(-50%);display:flex;gap:.5rem;align-items:center;background:var(--w);padding:.45rem;border-radius:50px;box-shadow:0 4px 20px rgba(44,36,22,.13);z-index:200}
+        .fnav button{width:40px;height:40px;border-radius:50%;border:none;background:var(--sand);font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .25s ease;font-family:inherit}
+        .fnav button:hover:not(:disabled){background:var(--ac);color:var(--w)}.fnav button:disabled{opacity:.3;cursor:not-allowed}
+        .fnav .nl{font-size:.78rem;font-weight:700;color:var(--text);padding:0 .5rem}
+        .comp{display:none;text-align:center;padding:2rem 1.25rem;background:var(--w);border-radius:var(--rd);box-shadow:var(--sh)}
+        .comp.on{display:block;animation:stIn .5s ease}
+        .comp .be{font-size:3.5rem;margin-bottom:.6rem;animation:bounce 2s ease-in-out infinite}
+        .comp h2{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--g);margin-bottom:.4rem}
+        .comp p{font-size:.88rem;color:var(--tm);line-height:1.5;margin-bottom:1.2rem}
+        .comp a{display:inline-flex;align-items:center;gap:.3rem;padding:.6rem 1.25rem;background:var(--ac);color:var(--w);border-radius:50px;text-decoration:none;font-weight:700;font-size:.82rem}
+    </style>
+</head>
+<body>
+<header class="top"><div class="top-in"><a href="index.html">← Zurück</a><div class="top-t"><span>✊</span><h1>Rassismus hat Folgen</h1></div><span class="top-tag">HS3</span></div></header>
+<div class="prog"><div class="prog-in"><div class="prog-dots"><div class="dot active" data-s="1" onclick="go(1)">1</div><div class="dot lock" data-s="2" onclick="go(2)">2</div><div class="dot lock" data-s="3" onclick="go(3)">3</div></div><div class="prog-bar"><div class="prog-fill" id="pf"></div></div></div></div>
+<main class="ct">
+<section class="st on" id="s1">
+    <div class="sth"><span class="em">🔎</span><h2>Folgen sichtbar machen</h2><p>Rassismus hat reale Konsequenzen – für Körper, Gefühle, Alltag und Zukunft.</p></div>
+    <div class="tw"><span class="twi">⚠️</span><p><strong>Hinweis:</strong> Die Geschichten beschreiben Rassismuserfahrungen. Sagt Bescheid, wenn es zu viel wird.</p></div>
+    <div id="caseW"></div>
+    <div class="fb" id="f1"></div>
+    <button class="done-btn" id="b1" disabled onclick="complete(1)">Station abschließen ✓</button>
+</section>
+<section class="st" id="s2">
+    <div class="sth"><span class="em">🤝</span><h2>Zuschauer oder Verbündete?</h2><p>Wegschauen, abwarten oder handeln? Eure Entscheidung hat Folgen.</p></div>
+    <div id="decW"></div>
+    <div class="fb" id="f2"></div>
+    <button class="done-btn" id="b2" disabled onclick="complete(2)">Station abschließen ✓</button>
+</section>
+<section class="st" id="s3">
+    <div class="sth"><span class="em">✊</span><h2>Klare Kante</h2><p>Findet die stärksten Gegenargumente gegen typische Ausreden!</p></div>
+    <div id="argW"></div>
+    <div class="fb" id="f3"></div>
+    <button class="done-btn" id="b3" disabled onclick="complete(3)">🎉 Alle Stationen geschafft!</button>
+</section>
+<div class="comp" id="comp"><div class="be">✊</div><h2>Ihr habt Haltung gezeigt!</h2><p>Ihr wisst, welche Folgen Rassismus hat und wie man dagegen argumentiert. Jetzt schreibt eure Texte für die Schulzeitung!</p><a href="index.html">← Zurück zur Übersicht</a></div>
+</main>
+<nav class="fnav"><button onclick="goPrev()" id="bp" disabled>◀</button><div class="nl"><span id="cl">1</span> / 3</div><button onclick="goNext()" id="bn" disabled>▶</button></nav>
+<script>
+let cur=1,T=3,dn=[];
+const CA=[
+{n:"Karim, 15",s:"Karim wird seit der 5. Klasse wegen seiner Herkunft beleidigt. Erst \u201Enur\u201C Witze, dann Ausschluss in der Pause. Inzwischen hat er Angst vor der Schule, seine Noten sind abgerutscht.",co:[{t:"Bauchschmerzen, Schlafprobleme",c:"body"},{t:"Angst, Einsamkeit, Scham",c:"feelings"},{t:"Meidet die Pause, geht ungern zur Schule",c:"daily"},{t:"Schlechtere Noten, kein Abschluss?",c:"future"}]},
+{n:"Fatima, 16",s:"Fatima tr\u00E4gt Kopftuch. Im Praktikum sagte man ihr: \u201EOhne das Ding w\u00E4rst du willkommener.\u201C Seitdem bewirbt sie sich kaum noch.",co:[{t:"Verspannungen, Kopfschmerzen",c:"body"},{t:"Selbstzweifel, Wut, Ohnmacht",c:"feelings"},{t:"Bewirbt sich nicht mehr",c:"daily"},{t:"Weniger Berufschancen",c:"future"}]}
+];
+function r1(){const w=document.getElementById('caseW');CA.forEach((c,i)=>{
+const pool=c.co.map(x=>`<div class="ci" draggable="true" data-c="${x.c}" data-i="${i}">${x.t}</div>`).sort(()=>Math.random()-.5).join('');
+w.innerHTML+=`<div class="case" id="ca${i}"><div class="case-h"><div class="cn">${c.n}</div><div class="cs">${c.s}</div></div><div class="cpool" id="cp${i}">${pool}</div><div class="czones"><div><div class="zl zb">\uD83E\uDEC0 K\u00F6rper</div><div class="dz" data-z="body" data-i="${i}"></div></div><div><div class="zl zf">\uD83D\uDC94 Gef\u00FChle</div><div class="dz" data-z="feelings" data-i="${i}"></div></div><div><div class="zl za">\uD83D\uDCC5 Alltag</div><div class="dz" data-z="daily" data-i="${i}"></div></div><div><div class="zl zfu">\uD83D\uDD2E Zukunft</div><div class="dz" data-z="future" data-i="${i}"></div></div></div></div>`;
+});initDD();}
+let s1p=0;const s1t=CA.reduce((a,c)=>a+c.co.length,0);
+function initDD(){
+document.querySelectorAll('.ci').forEach(el=>{
+el.addEventListener('dragstart',()=>{window._d=el;el.style.opacity='.4'});
+el.addEventListener('dragend',()=>{el.style.opacity='1';window._d=null;document.querySelectorAll('.dz').forEach(z=>z.classList.remove('over'))});
+let tc,ox,oy;
+el.addEventListener('touchstart',e=>{window._d=el;const t=e.touches[0],r=el.getBoundingClientRect();ox=t.clientX-r.left;oy=t.clientY-r.top;tc=el.cloneNode(true);tc.style.cssText=`position:fixed;z-index:999;pointer-events:none;opacity:.8;width:${r.width}px;font-size:.72rem;`;document.body.appendChild(tc);el.style.opacity='.3'},{passive:true});
+el.addEventListener('touchmove',e=>{e.preventDefault();if(!tc)return;const t=e.touches[0];tc.style.left=(t.clientX-ox)+'px';tc.style.top=(t.clientY-oy)+'px'},{passive:false});
+el.addEventListener('touchend',e=>{if(tc){tc.remove();tc=null}el.style.opacity='1';const t=e.changedTouches[0],hit=document.elementFromPoint(t.clientX,t.clientY)?.closest('.dz');if(hit&&window._d)drp(hit);window._d=null});
+});
+document.querySelectorAll('.dz').forEach(z=>{
+z.addEventListener('dragover',e=>{e.preventDefault();z.classList.add('over')});
+z.addEventListener('dragleave',()=>z.classList.remove('over'));
+z.addEventListener('drop',e=>{e.preventDefault();z.classList.remove('over');drp(z)});
+});}
+function drp(z){const el=window._d;if(!el||el.classList.contains('set'))return;if(z.dataset.i!==el.dataset.i)return;
+if(el.dataset.c===z.dataset.z){z.appendChild(el);el.classList.add('set','ok');el.draggable=false;s1p++;
+if(s1p>=s1t){show('f1','fg','\uD83D\uDC4F Alle Folgen zugeordnet. Rassismus wirkt auf den ganzen Menschen.');document.getElementById('b1').disabled=false}}
+else{el.classList.add('no');setTimeout(()=>el.classList.remove('no'),400)}}
+
+const DE=[
+{sc:“Pause. Drei Sch\u00FCler imitieren Ahmeds Akzent. Ahmed steht mit gesenktem Kopf da.”,ch:[
+{t:”\uD83D\uDEB6 Weitergehen. Nicht mein Problem.”,lv:“bad”,r:“Ahmed bleibt allein. Wegschauen ist stille Zustimmung.”},
+{t:”\uD83D\uDC40 Beobachten, danach Lehrkraft informieren.”,lv:“ok”,r:“Ein Anfang \u2013 aber Ahmed steht bis dahin alleine da.”},
+{t:”\uD83D\uDDE3\uFE0F Hingehen: \u201EHey, lasst das! Das ist nicht okay.\u201C”,lv:“best”,r:“Stark! Du durchbrichst die Dynamik. Ahmed wei\u00DF: Ich bin nicht allein.”}]},
+{sc:“Im Klassenchat: rassistisches Bild. Einige reagieren mit \uD83D\uDE02.”,ch:[
+{t:”\uD83D\uDE02 Auch ein Lach-Emoji schicken.”,lv:“bad”,r:“Du wirst Teil des Problems. Jedes Emoji sagt: \u201EDas ist akzeptabel.\u201C”},
+{t:”\uD83D\uDD07 Ignorieren.”,lv:“ok”,r:“Besser als mitmachen \u2013 aber Schweigen kann als Zustimmung gelesen werden.”},
+{t:”\u270B \u201EDas Bild ist rassistisch und nicht witzig.\u201C”,lv:“best”,r:“Respekt! Digitale Zivilcourage ist genauso wichtig.”}]},
+{sc:“Dein Kumpel: \u201EDie Fl\u00FCchtlinge kriegen alles geschenkt.\u201C Du wei\u00DFt, dass das nicht stimmt.”,ch:[
+{t:”\uD83D\uDC4D Nicken. Will keinen Streit.”,lv:“bad”,r:“Nicken = Zustimmung. Falsche Infos brauchen Widerspruch.”},
+{t:”\uD83E\uDD14 \u201EStimmt so nicht. Woher hast du das?\u201C”,lv:“best”,r:“Gut! Eine Frage \u00F6ffnet ein Gespr\u00E4ch ohne Angriff.”},
+{t:”\uD83D\uDE36 Thema wechseln.”,lv:“ok”,r:“Du vermeidest den Konflikt, aber das Vorurteil bleibt stehen.”}]}
+];
+function r2(){const w=document.getElementById(‘decW’);DE.forEach((d,i)=>{
+w.innerHTML+=`<div class="dc" id="dc${i}"><div class="ds">${d.sc}</div><div class="chs" id="dch${i}">${d.ch.map((c,j)=>`<button class="ch" data-lv="${c.lv}" onclick="dec(${i},${j})">${c.t}</button>`).join('')}</div><div class="cr" id="dcr${i}"></div></div>`;});}
+let s2d=0;
+function dec(i,j){const c=DE[i].ch[j],ct=document.getElementById(‘dch’+i),rv=document.getElementById(‘dcr’+i);
+ct.querySelectorAll(’.ch’).forEach(b=>{b.disabled=true;b.classList.add(b.dataset.lv===‘best’?‘best’:b.dataset.lv===‘ok’?‘okc’:‘bad’)});
+rv.className=‘cr on ‘+c.lv+’-r’;rv.textContent=c.r;
+s2d++;if(s2d>=DE.length){show(‘f2’,‘fg’,’\uD83D\uDCAA Verb\u00FCndete handeln \u2013 auch wenn es unbequem ist.’);document.getElementById(‘b2’).disabled=false}}
+
+const EX=[
+{q:”\u201EWar doch nur Spa\u00DF!\u201C”,opts:[
+{t:“Spa\u00DF ist es nur, wenn alle lachen. Sonst ist es Gewalt.”,s:1},
+{t:“Du hast recht, war bestimmt nicht so gemeint.”,s:0},
+{t:“Humor hat Grenzen \u2013 dort, wo jemand leidet.”,s:1}],
+gf:”\u2705 So entlarvt man diese Ausrede!”,bf:”\u274C Damit akzeptierst du die Ausrede.”},
+{q:”\u201EIch bin kein Rassist, ich habe ausl\u00E4ndische Freunde!\u201C”,opts:[
+{t:“Stimmt, dann kann man keiner sein.”,s:0},
+{t:“Freundschaften sch\u00FCtzen nicht vor Vorurteilen \u2013 oft unbewusst.”,s:1},
+{t:“Rassismus steckt auch in Alltagss\u00E4tzen. Niemand ist automatisch frei davon.”,s:1}],
+gf:”\u2705 Rassismus sind Denkmuster, die jeder reflektieren muss.”,bf:”\u274C So einfach ist es nicht.”},
+{q:”\u201EDie sind halt so \u2013 das sind Fakten!\u201C”,opts:[
+{t:“An manchen Vorurteilen ist was dran.”,s:0},
+{t:“Vorurteile sind keine Fakten \u2013 sie entstehen durch selektive Wahrnehmung.”,s:1},
+{t:“Jeder Mensch ist ein Individuum. Verallgemeinerung \u2260 Erfahrung.”,s:1}],
+gf:”\u2705 Verallgemeinerungen sind nie Fakten!”,bf:”\u274C Das best\u00E4tigt das Vorurteil.”}
+];
+function r3(){const w=document.getElementById(‘argW’);EX.forEach((e,i)=>{
+w.innerHTML+=`<div class="cd" id="ex${i}"><div class="exc"><div class="eq">\u274C ${e.q}</div><div class="et">${'Findet das st\u00E4rkste Gegenargument:'}</div></div>${e.opts.map(o=>`<button class="ab" data-s="${o.s}" onclick="cArg(${i},this)">${o.t}</button>`).join('')}<div class="afb" id="af${i}"></div></div>`;});}
+let s3d=0;
+function cArg(i,btn){const cd=document.getElementById(‘ex’+i),fb=document.getElementById(‘af’+i),ok=btn.dataset.s===‘1’;
+cd.querySelectorAll(’.ab’).forEach(b=>{b.disabled=true;if(b.dataset.s===‘1’)b.classList.add(‘strong’);else if(b===btn&&!ok)b.classList.add(‘weak’)});
+fb.className=‘afb on ‘+(ok?‘g’:‘r’);fb.textContent=ok?EX[i].gf:EX[i].bf;
+s3d++;if(s3d>=EX.length){show(‘f3’,‘fg’,’\u270A Ihr k\u00F6nnt Ausreden entlarven! Nutzt das in euren Texten.’);document.getElementById(‘b3’).disabled=false}}
+
+function show(id,cls,txt){const e=document.getElementById(id);e.className=‘fb on ‘+cls;e.textContent=txt}
+function complete(n){if(!dn.includes(n))dn.push(n);if(n<T){cur=n+1;ui();scr()}else{ui();document.getElementById(‘comp’).classList.add(‘on’);scr()}}
+function go(n){if(n>1&&!dn.includes(n-1))return;cur=n;ui();scr()}
+function goPrev(){if(cur>1){cur–;ui();scr()}}
+function goNext(){if(cur<T&&dn.includes(cur)){cur++;ui();scr()}}
+function scr(){window.scrollTo({top:0,behavior:‘smooth’})}
+function ui(){
+document.querySelectorAll(’.st’).forEach(s=>s.classList.remove(‘on’));
+const el=document.getElementById(‘s’+cur);if(el)el.classList.add(‘on’);
+document.querySelectorAll(’.dot’).forEach(d=>{const s=+d.dataset.s;d.className=‘dot’;d.textContent=s;if(dn.includes(s)){d.classList.add(‘done’);d.textContent=’’}else if(s===cur)d.classList.add(‘active’);else if(s>1&&!dn.includes(s-1))d.classList.add(‘lock’)});
+document.getElementById(‘pf’).style.width=Math.round(dn.length/T*100)+’%’;
+document.getElementById(‘cl’).textContent=cur;document.getElementById(‘bp’).disabled=cur<=1;document.getElementById(‘bn’).disabled=cur>=T||!dn.includes(cur);
+if(dn.length===T){document.querySelectorAll(’.st’).forEach(s=>s.classList.remove(‘on’));document.getElementById(‘comp’).classList.add(‘on’)}}
+r1();r2();r3();
+</script>
+
+</body>
+</html>
